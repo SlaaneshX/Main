@@ -2,7 +2,7 @@ fun main() {
     val melomanStatus = true
     val itemPrice = 100.0
     val itemsCount = 3
-    
+
     calculateDiscount(itemPrice, itemsCount, melomanStatus)
 }
 
