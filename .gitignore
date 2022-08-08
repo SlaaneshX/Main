@@ -2,7 +2,9 @@ Thumbs.db*
 .DS_Store*
 HELP.md
 .gradle
+/.gradle
 build/
+/.idea
 
 ### STS ###
 .apt_generated
