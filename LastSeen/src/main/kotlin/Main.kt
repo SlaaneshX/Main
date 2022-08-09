@@ -1,17 +1,17 @@
 fun main() {
     val lastSeenTime = 0
 
-    print(agoToText(60 * 60 * 3))
+    print(agoToText(60*12))
 }
 
 fun agoToText(seconds: Int): String {
     return when {
-        seconds in 0..60 -> "только что"
-        seconds in 61..60 * 60 -> "был(а) в сети ${seconds / 60} ${timeEnding(seconds / 60)} назад"
-        seconds in 60 * 60 + 1..60 * 60 * 24 -> "был(а) в сети ${(seconds / 60) / 60} ${timeEndingHour((seconds / 60) / 60)} назад"
-        seconds in 60 * 60 * 24 + 1..60 * 60 * 24 * 2 -> "сегодня"
-        seconds in 60 * 60 * 24 * 2 + 1..60 * 60 * 24 * 3 -> "вчера"
-        seconds > 60 * 60 * 24 * 3 + 1 -> "давно"
+        seconds in 0..60 -> "С‚РѕР»СЊРєРѕ С‡С‚Рѕ"
+        seconds in 61..60 * 60 -> "Р±С‹Р»(Р°) РІ СЃРµС‚Рё ${seconds / 60} ${timeEnding(seconds / 60)} РЅР°Р·Р°Рґ."
+        seconds in 60 * 60 + 1..60 * 60 * 24 -> "Р±С‹Р»(Р°) РІ СЃРµС‚Рё ${(seconds / 60) / 60} ${timeEndingHour((seconds / 60) / 60)} РЅР°Р·Р°Рґ."
+        seconds in 60 * 60 * 24 + 1..60 * 60 * 24 * 2 -> "СЃРµРіРѕРґРЅСЏ"
+        seconds in 60 * 60 * 24 * 2 + 1..60 * 60 * 24 * 3 -> "РІС‡РµСЂР°"
+        seconds > 60 * 60 * 24 * 3 + 1 -> "РґР°РІРЅРѕ"
         else -> "[default]"
     }
 }
@@ -19,21 +19,21 @@ fun agoToText(seconds: Int): String {
 fun timeEnding(min: Int): String {
     val time = min % 100 / 10
     return if (time == 1) {
-        "минут"
+        "РјРёРЅСѓС‚"
     } else when (min % 10) {
-        1 -> "минуту"
-        2, 3, 4 -> "минуты"
-        else -> "минут"
+        1 -> "РјРёРЅСѓС‚Сѓ"
+        2, 3, 4 -> "РјРёРЅСѓС‚"
+        else -> "РјРёРЅСѓС‚"
     }
 }
 
 fun timeEndingHour(min: Int): String {
     val time = min % 100 / 10
     return if (time == 1) {
-        "часов"
+        "С‡Р°СЃРѕРІ"
     } else when (min % 10) {
-        1 -> "час"
-        2, 3, 4 -> "часа"
-        else -> "часов"
+        1 -> "С‡Р°СЃ"
+        2, 3, 4 -> "С‡Р°СЃР°"
+        else -> "С‡Р°СЃРѕРІ"
     }
 }
