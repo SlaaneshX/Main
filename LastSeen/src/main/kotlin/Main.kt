@@ -1,7 +1,7 @@
 fun main() {
     val lastSeenTime = 0
 
-    print(agoToText(60*12))
+    print(agoToText(60*22))
 }
 
 fun agoToText(seconds: Int): String {
@@ -22,7 +22,7 @@ fun timeEnding(min: Int): String {
         "минут"
     } else when (min % 10) {
         1 -> "минуту"
-        2, 3, 4 -> "минут"
+        2, 3, 4 -> "минуты"
         else -> "минут"
     }
 }
