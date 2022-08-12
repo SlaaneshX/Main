@@ -1,5 +1,5 @@
 fun main() {
-    val cardType = CardsTypes.MASTERCARD_MAESTRO
+    val cardType = CardsTypes.MASTERCARD
     val beforeTransactionMonth = 75000.0
     val transactionSumm = 10000.0
 
@@ -7,12 +7,16 @@ fun main() {
 }
 
 enum class CardsTypes {
-    VISA_MIR, MASTERCARD_MAESTRO, VKPAY
+    VISA, MIR, MASTERCARD, MAESTRO, VKPAY
 }
 
-fun commissionCalc(type: CardsTypes, beforeTransactionMonth: Double, transaction: Double): Double {
+fun commissionCalc(
+    type: CardsTypes = CardsTypes.VKPAY,
+    beforeTransactionMonth: Double = 0.0,
+    transaction: Double
+): Double {
     return when (type) {
-        CardsTypes.MASTERCARD_MAESTRO ->
+        CardsTypes.MASTERCARD, CardsTypes.MAESTRO ->
             if (beforeTransactionMonth < 75000) {
                 return 0.0
             } else {
@@ -22,7 +26,7 @@ fun commissionCalc(type: CardsTypes, beforeTransactionMonth: Double, transaction
                     return transaction * 0.006 * 100.0
                 }
             }
-        CardsTypes.VISA_MIR ->
+        CardsTypes.VISA, CardsTypes.MIR ->
             if (transaction * 0.0075 < 35) {
                 return 35.0 * 100.0
             } else {
